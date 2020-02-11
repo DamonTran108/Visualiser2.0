@@ -5,7 +5,7 @@ function setup() {
     height = windowHeight;
     rectWidth = width / model.getData().length;
     rectHeight = height / model.getData().length;
-    shuffle = false;
+    shuffle = true;
     reset = false;
     createCanvas(width, height);
 }
@@ -13,7 +13,13 @@ function setup() {
 function draw() {
     //drawing code here
     background(51);
+    var colorInterval = 360 / model.getData().length;
     for(var i = 0; i < model.getData().length; i++) {
+
+        thisColor = colorInterval * model.getData()[i];
+        colorMode(HSB);
+        fill(thisColor, 100, 100);
+
         rect(i * rectWidth, height, rectWidth, -(rectHeight * model.getData()[i]));
     }
 
