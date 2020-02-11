@@ -1,35 +1,43 @@
-class Model {
-    constructor(sizeOfData) {
-        this._data = new Array();
+function setup() {
+    //setup code here
+    model = new Model(500);
+    width = windowWidth;
+    height = windowHeight;
+    rectWidth = width / model.getData().length;
+    rectHeight = height / model.getData().length;
+    shuffle = true;
+    reset = false;
+    createCanvas(width, height);
+}
 
-        for(var i = 0; i < sizeOfData; i++) {
-            this._data.push(i+1);
-        }
+function draw() {
+    //drawing code here
+    background(51);
+    var colorInterval = 360 / model.getData().length;
+    for(var i = 0; i < model.getData().length; i++) {
+
+        thisColor = colorInterval * model.getData()[i];
+        colorMode(HSB);
+        fill(thisColor, 100, 100);
+
+        rect(i * rectWidth, height, rectWidth, -(rectHeight * model.getData()[i]));
     }
 
-    shuffleData() {
-        var currentIndex = this._data.length;
-        var randomIndex;
-        var tempValue;
-
-        while(currentIndex !== 0) {
-            randomIndex = Math.floor(Math.random() * currentIndex);
-            currentIndex -= 1;
-
-            tempValue = this._data[currentIndex];
-            this._data[currentIndex] = this._data[randomIndex];
-            this._data[randomIndex] = tempValue;
-        }
+    if(shuffle) {
+        model.shuffleData();
+        shuffle = false;
     }
 
-    resetData() {
-        for(var i = 0; i < this._data.length; i++) {
-            this._data[i] = (i+1);
-        }
+    if(reset) {
+        model.resetData();
+        reset = false;
     }
+}
 
-    getData() {
-        return this._data;
-    }
-
+function windowResized() {
+    width = windowWidth;
+    height = windowHeight;
+    rectWidth = width / model.getData().length;
+    rectHeight = height / model.getData().length;
+    resizeCanvas(width, height);
 }
