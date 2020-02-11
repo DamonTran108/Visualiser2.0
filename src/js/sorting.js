@@ -25,7 +25,7 @@ function draw() {
 
     if(shuffle) {
         model.shuffleData();
-        shuffle = true;
+        shuffle = false;
     }
 
     if(reset) {
