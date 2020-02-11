@@ -13,16 +13,8 @@ function setup() {
 function draw() {
     //drawing code here
     background(51);
-    var colorInterval = 360 / model.getData().length;
-    for(var i = 0; i < model.getData().length; i++) {
 
-        thisColor = colorInterval * model.getData()[i];
-        colorMode(HSB);
-        fill(thisColor, 100, 100);
-
-        rect(i * rectWidth, height, rectWidth, -(rectHeight * model.getData()[i]));
-    }
-
+    
     if(shuffle) {
         model.shuffleData();
         shuffle = false;
@@ -31,6 +23,16 @@ function draw() {
     if(reset) {
         model.resetData();
         reset = false;
+    }
+
+    var colorInterval = 360 / model.getData().length;
+    for(var i = 0; i < model.getData().length; i++) {
+
+        thisColor = colorInterval * model.getData()[i];
+        colorMode(HSB);
+        fill(thisColor, 100, 100);
+
+        rect(i * rectWidth, height, rectWidth, -(rectHeight * model.getData()[i]));
     }
 }
 
