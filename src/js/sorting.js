@@ -15,9 +15,8 @@ function draw() {
     background(51);
 
     
-    if(shuffle) {
+    if(mouseIsPressed) {
         model.shuffleData();
-        shuffle = false;
     }
 
     if(reset) {
