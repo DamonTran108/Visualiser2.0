@@ -1,6 +1,6 @@
 function setup() {
     //setup code here
-    model = new Model(500);
+    model = new Model(100);
     width = windowWidth - 500;
     height = windowHeight - 200;
     rectWidth = width / model.getData().length;
@@ -41,8 +41,8 @@ function draw() {
 
         thisColor = colorInterval * model.getData()[i];
         colorMode(HSB);
-        fill(thisColor, 100, 100);
-
+        fill(thisColor, 100, 85);
+        noStroke();
         rect(i * rectWidth, height, rectWidth, -(rectHeight * model.getData()[i]));
     }
 }
@@ -74,7 +74,7 @@ async function bubbleSort(){
             for(let j = 0 ; j < (model.getData().length-i); j++){
                 if(model.getData()[j] > model.getData()[j+1]){
                     model.swap(j,(j+1));
-                    await sleep(1);
+                    await sleep(0);
                 }
                 if(shuffle || reset) {
                     break;
