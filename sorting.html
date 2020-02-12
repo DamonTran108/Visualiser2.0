@@ -3,33 +3,41 @@
 
 	<head>
 		<meta charset="utf-8">
-
+		<script src="./src/js/p5.min.js"></script>
+		<script src="./src/js/model.js"></script>
+		<script src="./src/js/sorting.js"></script>
 		<link rel="stylesheet" type="text/css" href="./src/css/global.css">
 		<title>Visualiser</title>
 	</head>
 
 	<body>
-    <nav>
-        <ul>
-          <li><a href="./index.html">Home</a></li>
-          <li><a href="./sorting.html">Sorting</a></li>
-          <li  id="dropdown">
-            <a href="#">Searching</a>
-            <div class="dropdown-content">
-              <a href="#">...</a>
-              <a href="#">...</a>
-              <a href="#">...</a>
-            </div>
-          </li>
-        </ul>
-      </nav>
-      
-      <div class="sorting">
-        <script src="./src/js/p5.min.js"></script>
-        <script src="./src/js/model.js"></script>
-        <script src="./src/js/sorting.js"></script>
-      </div>
+		<nav>
+				<ul>
+					<li><a href="./index.html">Home</a></li>
+					<li><a href="./sorting.html">Sorting</a></li>
+					<li  id="dropdown">
+						<a href="#">Searching</a>
+						<div class="dropdown-content">
+							<a href="#">...</a>
+							<a href="#">...</a>
+							<a href="#">...</a>
+						</div>
+					</li>
+				</ul>
+			</nav>
 
+			<div class="controlPanel">
+				<button class="ctrlContent" type="button" name="button">Shuffle</button>
+
+				<select class="ctrlContent">
+					<option value="">Bubble sort</option>
+					<option value="">...</option>
+					<option value="">...</option>
+					<option value="">...</option>
+				</select>
+
+				<button class="ctrlContent" type="button" name="button">Sort</button>
+			</div>
 
 	</body>
 </html>

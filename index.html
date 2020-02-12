@@ -9,6 +9,7 @@
 	</head>
 
 	<body>
+
 		<nav>
         <ul>
           <li><a href="./index.html">Home</a></li>
@@ -18,43 +19,42 @@
             <div class="dropdown-content">
               <a href="#">...</a>
               <a href="#">...</a>
-			  <a href="#">...</a>
+			  			<a href="#">...</a>
             </div>
           </li>
         </ul>
       </nav>
 
-			<div class="main">
-				<div id="welcomContainer">
-					<h1 id="welcomeHeader" onclick="shuffleString()">Algorithms made simple!</h1>
-					<p id="welcomePara">
-						Struggling to understand key computing algorithms such as insertion sort or binary search?
-						Perhaps you just want to brush up on your algorithm knowledge, or maybe you just have nothing better to do.
-					</p>
-				</div>
+			<div id="welcomContainer">
+				<h1 id="welcomeHeader" onclick="shuffleString()">Algorithms made simple!</h1>
+				<p id="welcomePara">
+					Struggling to understand key computing algorithms such as insertion sort or binary search?
+					Perhaps you just want to brush up on your algorithm knowledge, or maybe you just have nothing better to do.
+				</p>
 			</div>
 
 		<script>
 
-		function shuffleString(){
+			function shuffleString(){
 
-			var stringArray = document.getElementById('welcomeHeader').textContent.split("");
-			var i = stringArray.length, outputString = " ", rand, temp;
+				var stringArray = document.getElementById('welcomeHeader').textContent.split("");
+				var i = stringArray.length, outputString = " ", rand, temp;
 
-			while(--i > 0){
-				rand = Math.floor(Math.random() *(i+1));
-				temp = stringArray[rand];
-				stringArray[rand] = stringArray[i];
-				stringArray[i] = temp;
+				while(--i > 0){
+					rand = Math.floor(Math.random() *(i+1));
+					temp = stringArray[rand];
+					stringArray[rand] = stringArray[i];
+					stringArray[i] = temp;
+				}
+
+				for(var x =  0; x < stringArray.length -1; x++){
+					outputString += stringArray[x];
+				}
+
+				document.getElementById("welcomeHeader").innerHTML = outputString;
+
 			}
 
-			for(var x =  0; x < stringArray.length -1; x++){
-				outputString += stringArray[x];
-			}
-
-			document.getElementById("welcomeHeader").innerHTML = outputString;
-
-		}
 		</script>
 
 	</body>
