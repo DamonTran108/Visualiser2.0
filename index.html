@@ -3,6 +3,7 @@
 
 	<head>
 		<meta charset="utf-8">
+
 		<link rel="stylesheet" type="text/css" href="./src/css/global.css">
 		<title>Visualiser</title>
 	</head>
@@ -25,7 +26,7 @@
 
 			<div class="main">
 				<div id="welcomContainer">
-					<h1 id="welcomeHeader" onclick="shuffle()">Algorithms made simple!</h1>
+					<h1 id="welcomeHeader" onclick="shuffleString()">Algorithms made simple!</h1>
 					<p id="welcomePara">
 						Struggling to understand key computing algorithms such as insertion sort or binary search?
 						Perhaps you just want to brush up on your algorithm knowledge, or maybe you just have nothing better to do.
@@ -33,44 +34,27 @@
 				</div>
 			</div>
 
-
-		<!-- Test shuffle script -->
 		<script>
-			var headerArr = document.getElementById('welcomeHeader').textContent.split("");
-				function randomPair(){
-					var num1 = Math.floor(Math.random() * headerArr.length);
-					var num2 = Math.floor(Math.random() * headerArr.length);
-					var pair = [0,0];
 
-					if(num1 == num2){
-						num1 = Math.floor(Math.random() * headerArr.length);
-						num2 = Math.floor(Math.random() * headerArr.length);
-					}
-					else {
-						pair[0] = num1;
-						pair[1] = num2;
-					}
-					return pair;
-				}
+		function shuffleString(){
 
-				function shuffle(){
-					for(var i = 0; i < headerArr.length - 1; i++){
-						var pair = randomPair();
+			var stringArray = document.getElementById('welcomeHeader').textContent.split("");
+			var i = stringArray.length, outputString = " ", rand, temp;
 
-						var char1 = headerArr[pair[0]];
-						var char2 = headerArr[pair[1]];
+			while(--i > 0){
+				rand = Math.floor(Math.random() *(i+1));
+				temp = stringArray[rand];
+				stringArray[rand] = stringArray[i];
+				stringArray[i] = temp;
+			}
 
-						headerArr[pair[0]] = char2;
-						headerArr[pair[1]] = char1;
-					}
+			for(var x =  0; x < stringArray.length -1; x++){
+				outputString += stringArray[x];
+			}
 
-					var shuffledStr = "";
+			document.getElementById("welcomeHeader").innerHTML = outputString;
 
-					for(var i = 0; i < headerArr.length - 1; i++){
-						shuffledStr += headerArr[i];
-					}
-					document.getElementById("welcomeHeader").innerHTML = shuffledStr;
-				}
+		}
 		</script>
 
 	</body>
