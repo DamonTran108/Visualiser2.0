@@ -54,12 +54,12 @@ function windowResized() {
     resizeCanvas(width, height);
 }
 
-function buttonPress() {
+function shuffle() {
     shuffle = !shuffle;
     reset = false;
 }
 
-function resetPress() {
+function reset() {
     shuffle = false;
     reset = true;
 }
