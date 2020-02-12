@@ -16,7 +16,7 @@ function setup() {
 
 function draw() {
     //drawing code here
-    background(51);
+    background('rgba(0,0,0,0)');
 
     if(shuffle) {
         model.shuffleData();
