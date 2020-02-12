@@ -30,7 +30,7 @@ function draw() {
 
     if(shuffle) {
         model.shuffleData();
-        shuffle = true;
+        shuffle = false;
         sorting = false;
     }
 
