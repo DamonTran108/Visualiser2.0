@@ -1,6 +1,6 @@
 function setup() {
     //setup code here
-    model = new Model(100);
+    model = new Model(500);
     width = windowWidth - 500;
     height = windowHeight - 200;
     rectWidth = width / model.getData().length;
