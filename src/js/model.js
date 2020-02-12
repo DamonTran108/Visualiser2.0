@@ -18,7 +18,6 @@ class Model {
     shuffleData() {
         var currentIndex = this._data.length;
         var randomIndex;
-        var tempValue;
 
         while(currentIndex !== 0) {
             randomIndex = Math.floor(Math.random() * currentIndex);
@@ -39,3 +38,16 @@ class Model {
 
 }
 
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+
+/*
+var model = new Model(10);
+console.log(model.getData());
+model.shuffleData();
+console.log(model.getData());
+model.sortData();
+console.log(model.getData());
+*/

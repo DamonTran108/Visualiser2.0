@@ -5,8 +5,9 @@ function setup() {
     height = windowHeight - 200;
     rectWidth = width / model.getData().length;
     rectHeight = height / model.getData().length;
-    shuffle = true;
+    shuffle = false;
     reset = false;
+    sorting = false;
     var cnv = createCanvas(width, height);
     var x = (windowWidth - width) / 2;
     var y = (windowHeight - height) / 2;
@@ -17,17 +18,24 @@ function draw() {
     //drawing code here
     background(51);
 
-
-    if(mouseIsPressed) {
+    if(shuffle) {
         model.shuffleData();
+        shuffle = false;
+        sorting = false;
     }
 
     if(reset) {
         model.resetData();
         reset = false;
+        sorting = false;
     }
 
-    var colorInterval = 360 / model.getData().length;
+    if(sorting) {
+        reset = false;
+        shuffle = false;
+    }
+
+    var colorInterval = 315 / model.getData().length;
     for(var i = 0; i < model.getData().length; i++) {
 
         thisColor = colorInterval * model.getData()[i];
@@ -44,4 +52,38 @@ function windowResized() {
     rectWidth = width / model.getData().length;
     rectHeight = height / model.getData().length;
     resizeCanvas(width, height);
+}
+
+function buttonPress() {
+    shuffle = !shuffle;
+    reset = false;
+}
+
+function resetPress() {
+    shuffle = false;
+    reset = true;
+}
+
+async function bubbleSort(){
+
+    shuffle = false;
+    if(!sorting) {
+        sorting = true;
+        for(let i = 0; i < model.getData().length; i++){
+            for(let j = 0 ; j < (model.getData().length-i); j++){
+                if(model.getData()[j] > model.getData()[j+1]){
+                    model.swap(j,(j+1));
+                    await sleep(1);
+                }
+                if(shuffle || reset) {
+                    break;
+                }
+            }
+        }
+        sorting = false;
+    }
+}
+
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
 }
