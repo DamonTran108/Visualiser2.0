@@ -16,7 +16,8 @@ function setup() {
 
 function draw() {
     //drawing code here
-    background('rgba(0,0,0,0)');
+    colorMode(RGB);
+    background(173, 216, 230);
 
     if(shuffle) {
         model.shuffleData();
@@ -54,7 +55,7 @@ function windowResized() {
     resizeCanvas(width, height);
 }
 
-function shuffle() {
+function shuffleData() {
     shuffle = !shuffle;
     reset = false;
 }
