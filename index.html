@@ -1,61 +1,52 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 
-	<head>
-		<meta charset="utf-8">
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="./src/css/global.css">
+	<title>Visualiser</title>
+</head>
 
-		<link rel="stylesheet" type="text/css" href="./css/global.css">
-		<title>Visualiser</title>
-	</head>
+<body>
 
-	<body>
+	<div id="navDiv"></div>
 
-		<nav>
-        <ul>
-          <li><a href="./index.html">Home</a></li>
-					<li><a href="./html/sorting.html">Sorting</a></li>
-					<li  id="dropdown">
-            <a href="#">Searching</a>
-            <div class="dropdown-content">
-              <a href="#">...</a>
-              <a href="#">...</a>
-			  			<a href="#">...</a>
-            </div>
-          </li>
-        </ul>
-      </nav>
+	<script>
+		$("#navDiv").load("nav.html");
+	</script>
 
-			<div id="welcomContainer">
-				<h1 id="welcomeHeader" onclick="shuffleString()">Algorithms made simple!</h1>
-				<p id="welcomePara">
-					Struggling to understand key computing algorithms such as insertion sort or binary search?
-					Perhaps you just want to brush up on your algorithm knowledge, or maybe you just have nothing better to do.
-				</p>
-			</div>
+	<div id="welcomContainer">
+		<h1 id="welcomeHeader" onclick="shuffleString()">Algorithms made simple!</h1>
+		<p id="welcomePara">
+			Struggling to understand key computing algorithms such as insertion sort or binary search?
+			Perhaps you just want to brush up on your algorithm knowledge, or maybe you just have nothing better to do.
+		</p>
+	</div>
 
-		<script>
+	<script>
 
-			function shuffleString(){
+		function shuffleString() {
 
-				var stringArray = document.getElementById('welcomeHeader').textContent.split("");
-				var i = stringArray.length, outputString = " ", rand, temp;
+			var stringArray = document.getElementById('welcomeHeader').textContent.split("");
+			var i = stringArray.length, outputString = " ", rand, temp;
 
-				while(--i > 0){
-					rand = Math.floor(Math.random() *(i+1));
-					temp = stringArray[rand];
-					stringArray[rand] = stringArray[i];
-					stringArray[i] = temp;
-				}
-
-				for(var x =  0; x < stringArray.length -1; x++){
-					outputString += stringArray[x];
-				}
-
-				document.getElementById("welcomeHeader").innerHTML = outputString;
-
+			while (--i > 0) {
+				rand = Math.floor(Math.random() * (i + 1));
+				temp = stringArray[rand];
+				stringArray[rand] = stringArray[i];
+				stringArray[i] = temp;
 			}
 
-		</script>
+			for (var x = 0; x < stringArray.length - 1; x++) {
+				outputString += stringArray[x];
+			}
 
-	</body>
+			document.getElementById("welcomeHeader").innerHTML = outputString;
+
+		}
+
+	</script>
+
+</body>
+
 </html>
