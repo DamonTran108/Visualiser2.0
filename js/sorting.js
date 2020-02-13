@@ -1,6 +1,6 @@
 function setup() {
     //setup code here
-    
+
     model = new Model(100);
     width = windowWidth - 500;
     height = windowHeight - 200;
@@ -21,26 +21,26 @@ function draw() {
     colorMode(RGB);
     background(173, 216, 230);
 
-    if(shuffle) {
+    if (shuffle) {
         model.shuffleData();
         shuffle = false;
         sorting = false;
     }
 
-    if(reset) {
+    if (reset) {
         model.resetData();
         reset = false;
         sorting = false;
     }
 
-    if(sorting) {
+    if (sorting) {
         reset = false;
         shuffle = false;
 
     }
 
     var colorInterval = 315 / model.getData().length;
-    for(var i = 0; i < model.getData().length; i++) {
+    for (var i = 0; i < model.getData().length; i++) {
 
         thisColor = colorInterval * model.getData()[i];
         colorMode(HSB);
@@ -69,18 +69,18 @@ function resetData() {
 
 }
 
-async function bubbleSort(){
+async function bubbleSort() {
 
     shuffle = false;
-    if(!sorting) {
+    if (!sorting) {
         sorting = true;
-        for(let i = 0; i < model.getData().length; i++){
-            for(let j = 0 ; j < (model.getData().length-i); j++){
-                if(model.getData()[j] > model.getData()[j+1]){
-                    model.swap(j,(j+1));
+        for (let i = 0; i < model.getData().length; i++) {
+            for (let j = 0; j < (model.getData().length - i); j++) {
+                if (model.getData()[j] > model.getData()[j + 1]) {
+                    model.swap(j, (j + 1));
                     await sleep(0);
                 }
-                if(shuffle || reset) {
+                if (shuffle || reset) {
                     break;
                 }
             }
@@ -89,31 +89,31 @@ async function bubbleSort(){
     }
 }
 
-async function quickSort(start, end){
+async function quickSort(start, end) {
 
-    if(start>= end){
+    if (start >= end) {
         return;
     }
 
-    let index =  await partition(start, end);
+    let index = await partition(start, end);
 
     await Promise.all([
-      quickSort(start, index-1),
-      quickSort(index+1, end)
+        quickSort(start, index - 1),
+        quickSort(index + 1, end)
     ]);
 
 }
 
-async function partition(start, end){
+async function partition(start, end) {
     let pivotIndex = start;
     let pivotValue = model.getData()[end];
 
-    for(let i = start; i < end; i++){
-        if(model.getData()[i] <  pivotValue){
-          await sleep(0);
+    for (let i = start; i < end; i++) {
+        if (model.getData()[i] < pivotValue) {
+            await sleep(0);
 
 
-              await model.swap(i, pivotIndex);
+            await model.swap(i, pivotIndex);
 
 
             pivotIndex++;
@@ -125,13 +125,32 @@ async function partition(start, end){
     return pivotIndex;
 }
 
-async function execute(){
+async function execute() {
 
 
-    quickSort(0, model.getData().length-1);
+    quickSort(0, model.getData().length - 1);
     console.log(model.getData());
-  }
+}
 
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+async function beginSort() {
+
+    var dropDownMenu = document.getElementById("dropDown");
+    var i = dropDownMenu.selectedIndex;
+    var userChoice = dropDownMenu.options[i].text;
+
+
+    if (userChoice === "Bubble sort") {
+
+        bubbleSort();
+
+    } else if (userChoice === "Quick sort") {
+
+        execute();
+    }
+
+
 }
