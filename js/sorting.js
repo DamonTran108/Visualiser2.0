@@ -132,11 +132,6 @@ async function execute(){
     console.log(model.getData());
   }
 
-
-
-
-
-
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
