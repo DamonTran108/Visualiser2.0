@@ -87,8 +87,7 @@ async function bubbleSort(){
     }
 }
 
- function quickSort(start, end){
-
+function quickSort(start, end){
     if(start>= end){
         return;
     }
@@ -99,24 +98,21 @@ async function bubbleSort(){
     quickSort(index+1, end);
 }
 
- function partition(start, end){
-  let pivotIndex = start;
-  let pivotValue = model.getData()[end];
+function partition(start, end){
+    let pivotIndex = start;
+    let pivotValue = model.getData()[end];
 
-
-  for(let i = start; i < end; i++){
-    if(model.getData()[i] <  pivotValue){
-
-      model.swap(i, pivotIndex);
-
-      pivotIndex++;
+    for(let i = start; i < end; i++){
+        if(model.getData()[i] <  pivotValue){
+            model.swap(i, pivotIndex);
+            pivotIndex++;
+        }
     }
-  }
-  model.swap(pivotIndex, end);
-return pivotIndex;
+    model.swap(pivotIndex, end);
+    return pivotIndex;
 }
 
-function execute(){
+async function execute(){
   quickSort(0, model.getData().length-1);
   console.log(model.getData());
 }
