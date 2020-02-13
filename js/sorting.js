@@ -1,6 +1,6 @@
 function setup() {
     //setup code here
-    
+
     model = new Model(100);
     width = windowWidth - 500;
     height = windowHeight - 200;
@@ -110,7 +110,7 @@ async function partition(start, end){
 
     for(let i = start; i < end; i++){
         if(model.getData()[i] <  pivotValue){
-          await sleep(0);
+          await sleep(50);
 
 
               await model.swap(i, pivotIndex);
@@ -119,7 +119,7 @@ async function partition(start, end){
             pivotIndex++;
         }
     }
-    await sleep(0);
+    await sleep(50);
     await model.swap(pivotIndex, end);
 
     return pivotIndex;
