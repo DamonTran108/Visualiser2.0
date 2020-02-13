@@ -12,6 +12,7 @@ function setup() {
     var x = (windowWidth - width) / 2;
     var y = (windowHeight - height) / 2;
     cnv.position(x, y);
+
 }
 
 function draw() {
@@ -34,6 +35,7 @@ function draw() {
     if(sorting) {
         reset = false;
         shuffle = false;
+
     }
 
     var colorInterval = 315 / model.getData().length;
@@ -83,6 +85,46 @@ async function bubbleSort(){
         }
         sorting = false;
     }
+}
+
+ function quickSort(start, end){
+
+     if(start>= end){
+       return;
+     }
+
+
+
+    let index =  partition(start, end);
+
+    quickSort(start, index-1);
+    quickSort(index+1, end);
+
+
+
+
+}
+
+ function partition(start, end){
+  let pivotIndex = start;
+  let pivotValue = model.getData()[end];
+
+
+  for(let i = start; i < end; i++){
+    if(model.getData()[i] <  pivotValue){
+
+      model.swap(i, pivotIndex);
+
+      pivotIndex++;
+    }
+  }
+  model.swap(pivotIndex, end);
+return pivotIndex;
+}
+
+function execute(){
+  quickSort(0, model.getData().length);
+  console.log(model.getData());
 }
 
 function sleep(ms) {
