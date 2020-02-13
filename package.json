@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/DamonTran108/Visualiser#readme",
   "dependencies": {
+    "jQuery": "^1.7.4",
     "jquery": "^3.4.1"
   }
 }
