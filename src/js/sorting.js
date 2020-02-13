@@ -62,7 +62,7 @@ function shuffleData() {
     reset = false;
 }
 
-function reset() {
+function resetData() {
     shuffle = false;
     reset = true;
 }
