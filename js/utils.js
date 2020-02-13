@@ -1,4 +1,6 @@
 
-function loadNavbar(){
-    $("#navDiv").load("nav.html");
+function loadNav(){
+    $(document).ready(function(){
+        $("#navDiv").load("nav.html");
+    });
 }
