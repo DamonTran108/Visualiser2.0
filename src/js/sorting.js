@@ -89,20 +89,14 @@ async function bubbleSort(){
 
  function quickSort(start, end){
 
-     if(start>= end){
-       return;
-     }
-
-
+    if(start>= end){
+        return;
+    }
 
     let index =  partition(start, end);
 
     quickSort(start, index-1);
     quickSort(index+1, end);
-
-
-
-
 }
 
  function partition(start, end){
