@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/DamonTran108/Visualiser/issues"
   },
-  "homepage": "https://github.com/DamonTran108/Visualiser#readme"
+  "homepage": "https://github.com/DamonTran108/Visualiser#readme",
+  "dependencies": {
+    "jquery": "^3.4.1"
+  }
 }
