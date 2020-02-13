@@ -1,32 +1,47 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 
-	<head>
-		<meta charset="utf-8">
-		<script src="../js/p5.min.js"></script>
-		<script src="../js/model.js"></script>
-		<script src="../js/sorting.js"></script>
-		<link rel="stylesheet" type="text/css" href="../css/global.css">
-		<title>Visualiser</title>
-	</head>
+<head>
+	<meta charset="utf-8">
+	<script src="../js/p5.min.js"></script>
+	<script src="../js/model.js"></script>
+	<script src="../js/sorting.js"></script>
+	<link rel="stylesheet" type="text/css" href="../css/global.css">
+	<title>Visualiser</title>
+</head>
 
-	<body>
+<body>
 
-			<div class="controlPanel">
-				<button class="ctrlContent" type="button" name="button" onclick="shuffleData()">Shuffle</button>
-				<button class="ctrlContent" type="button" name="button" onclick="resetData()">Reset</button>
+	<nav>
+		<ul>
+			<li><a href="../index.html">Home</a></li>
+			<li><a href="sorting.html">Sorting</a></li>
+			<li id="dropdown">
+				<a href="#">Searching</a>
+				<div class="dropdown-content">
+					<a href="#">...</a>
+					<a href="#">...</a>
+					<a href="#">...</a>
+				</div>
+			</li>
+		</ul>
+	</nav>
 
-				<select class="ctrlContent">
-					<option value="">Bubble sort</option>
-					<option value="">...</option>
-					<option value="">...</option>
-					<option value="">...</option>
-				</select>
+	<div class="controlPanel">
+		<button class="ctrlContent" type="button" name="button" onclick="shuffleData()">Shuffle</button>
+		<button class="ctrlContent" type="button" name="button" onclick="resetData()">Reset</button>
 
-				<button class="ctrlContent" type="button" name="button" onclick="bubbleSort()">Bubble Sort</button>
-				<button class="ctrlContent" type="button" name="button" onclick="execute()">QuickSort</button>
-				
-			</div>
+		<select id="dropDown" class="ctrlContent">
+			<option value="">Bubble sort</option>
+			<option value="">Quick sort</option>
+			<option value="">...</option>
+			<option value="">...</option>
+		</select>
 
-	</body>
+		<button class="ctrlContent" type="button" onclick="beginSort()">Sort</button>
+
+	</div>
+
+</body>
+
 </html>

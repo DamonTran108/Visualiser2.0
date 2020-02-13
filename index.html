@@ -3,7 +3,7 @@
 
 <head>
 	<meta charset="utf-8">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
 	<script src="js/utils.js"></script>
 	<link rel="stylesheet" type="text/css" href="css/global.css">
 	<title>Visualiser</title>
@@ -11,13 +11,30 @@
 
 <body>
 
-	<div id="navDiv"></div>
+	<nav>
+		<ul>
+			<li><a href="./index.html">Home</a></li>
+			<li><a href="html/sorting.html">Sorting</a></li>
+			<li id="dropdown">
+				<a href="#">Searching</a>
+				<div class="dropdown-content">
+					<a href="#">...</a>
+					<a href="#">...</a>
+					<a href="#">...</a>
+				</div>
+			</li>
+		</ul>
+	</nav>
+
+	<!-- <div id="navDiv">
+
+	</div>
 
 	<script>
-		 $(document).ready(function(){
-        $("#navDiv").load("nav.html");
-    });
-	</script>
+		$(function(){ 
+			$("#navDiv").load("html/nav.html");
+    	});
+	</script> -->
 
 	<div id="welcomContainer">
 		<h1 id="welcomeHeader" onclick="shuffleString()">Algorithms made simple!</h1>
