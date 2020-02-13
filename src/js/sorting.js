@@ -65,6 +65,7 @@ function shuffleData() {
 function resetData() {
     shuffle = false;
     reset = true;
+
 }
 
 async function bubbleSort(){
@@ -87,35 +88,53 @@ async function bubbleSort(){
     }
 }
 
-function quickSort(start, end){
+async function quickSort(start, end){
+
     if(start>= end){
         return;
     }
 
-    let index =  partition(start, end);
+    let index =  await partition(start, end);
 
-    quickSort(start, index-1);
-    quickSort(index+1, end);
+    await Promise.all([
+      quickSort(start, index-1),
+      quickSort(index+1, end)
+    ]);
+
 }
 
-function partition(start, end){
+async function partition(start, end){
     let pivotIndex = start;
     let pivotValue = model.getData()[end];
 
     for(let i = start; i < end; i++){
         if(model.getData()[i] <  pivotValue){
-            model.swap(i, pivotIndex);
+          await sleep(0);
+
+
+              await model.swap(i, pivotIndex);
+
+
             pivotIndex++;
         }
     }
-    model.swap(pivotIndex, end);
+    await sleep(0);
+    await model.swap(pivotIndex, end);
+
     return pivotIndex;
 }
 
 async function execute(){
-  quickSort(0, model.getData().length-1);
-  console.log(model.getData());
-}
+
+
+    quickSort(0, model.getData().length-1);
+    console.log(model.getData());
+  }
+
+
+
+
+
 
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
