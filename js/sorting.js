@@ -12,6 +12,7 @@ function setup() {
     var x = (windowWidth - width) / 2;
     var y = (windowHeight - height) / 2;
     cnv.position(x, y);
+
 }
 
 function draw() {
@@ -34,6 +35,7 @@ function draw() {
     if(sorting) {
         reset = false;
         shuffle = false;
+
     }
 
     var colorInterval = 315 / model.getData().length;
@@ -63,6 +65,7 @@ function shuffleData() {
 function resetData() {
     shuffle = false;
     reset = true;
+
 }
 
 async function bubbleSort(){
@@ -84,6 +87,54 @@ async function bubbleSort(){
         sorting = false;
     }
 }
+
+async function quickSort(start, end){
+
+    if(start>= end){
+        return;
+    }
+
+    let index =  await partition(start, end);
+
+    await Promise.all([
+      quickSort(start, index-1),
+      quickSort(index+1, end)
+    ]);
+
+}
+
+async function partition(start, end){
+    let pivotIndex = start;
+    let pivotValue = model.getData()[end];
+
+    for(let i = start; i < end; i++){
+        if(model.getData()[i] <  pivotValue){
+          await sleep(0);
+
+
+              await model.swap(i, pivotIndex);
+
+
+            pivotIndex++;
+        }
+    }
+    await sleep(0);
+    await model.swap(pivotIndex, end);
+
+    return pivotIndex;
+}
+
+async function execute(){
+
+
+    quickSort(0, model.getData().length-1);
+    console.log(model.getData());
+  }
+
+
+
+
+
 
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
