@@ -1,5 +1,6 @@
 function setup() {
     //setup code here
+    
     model = new Model(100);
     width = windowWidth - 500;
     height = windowHeight - 200;
