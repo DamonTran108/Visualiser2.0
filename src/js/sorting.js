@@ -117,7 +117,7 @@ return pivotIndex;
 }
 
 function execute(){
-  quickSort(0, model.getData().length);
+  quickSort(0, model.getData().length-1);
   console.log(model.getData());
 }
 
