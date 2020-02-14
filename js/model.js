@@ -1,7 +1,6 @@
 class Model {
     constructor(sizeOfData) {
         this._data = new Array();
-
         for(var i = 0; i < sizeOfData; i++) {
             this._data.push(i+1);
         }
@@ -30,10 +29,19 @@ class Model {
         for(var i = 0; i < this._data.length; i++) {
             this._data[i] = (i+1);
         }
+
     }
 
     getData() {
         return this._data;
+    }
+
+    getResetVal(){
+      return this._isReset;
+    }
+
+    setResetVal(value){
+      this._isReset = value;
     }
 
 }
