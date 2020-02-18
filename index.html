@@ -3,38 +3,16 @@
 
 <head>
 	<meta charset="utf-8">
-	<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
+	<script src="js/utils.js"></script>
 	<script src="js/utils.js"></script>
 	<link rel="stylesheet" type="text/css" href="css/global.css">
 	<title>Visualiser</title>
 </head>
 
 <body>
-
-	<nav>
-		<ul>
-			<li><a href="./index.html">Home</a></li>
-			<li><a href="html/sorting.html">Sorting</a></li>
-			<li id="dropdown">
-				<a href="#">Searching</a>
-				<div class="dropdown-content">
-					<a href="#">...</a>
-					<a href="#">...</a>
-					<a href="#">...</a>
-				</div>
-			</li>
-		</ul>
-	</nav>
-
-	<!-- <div id="navDiv">
-
-	</div>
-
 	<script>
-		$(function(){ 
-			$("#navDiv").load("html/nav.html");
-    	});
-	</script> -->
+		loadNav("./", "html/");
+	</script>
 
 	<div id="welcomContainer">
 		<h1 id="welcomeHeader" onclick="shuffleString()">Algorithms made simple!</h1>
@@ -43,30 +21,6 @@
 			Perhaps you just want to brush up on your algorithm knowledge, or maybe you just have nothing better to do.
 		</p>
 	</div>
-
-	<script>
-
-		function shuffleString() {
-
-			var stringArray = document.getElementById('welcomeHeader').textContent.split("");
-			var i = stringArray.length, outputString = " ", rand, temp;
-
-			while (--i > 0) {
-				rand = Math.floor(Math.random() * (i + 1));
-				temp = stringArray[rand];
-				stringArray[rand] = stringArray[i];
-				stringArray[i] = temp;
-			}
-
-			for (var x = 0; x < stringArray.length - 1; x++) {
-				outputString += stringArray[x];
-			}
-
-			document.getElementById("welcomeHeader").innerHTML = outputString;
-
-		}
-
-	</script>
 
 </body>
 
