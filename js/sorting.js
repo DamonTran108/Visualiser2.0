@@ -26,8 +26,8 @@ async function draw() {
         //await model.shuffleData();
 
         //shuffle = false;
-        sorting = false;
-        redraw();
+        //sorting = false;
+        //redraw();
     }
 
     if (reset) {
@@ -67,14 +67,15 @@ function shuffleData() {
 }
 
 async function shuffleIt(){
+  sorting = false;
   console.log(shuffle);
   await shuffleData();
   await model.shuffleData();
 
-  shuffle = true;
+  //shuffle = true;
 
 
-  sorting = false;
+
   console.log(shuffle);
 
 }
