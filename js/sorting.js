@@ -17,15 +17,17 @@ function setup() {
 
 }
 
-function draw() {
+async function draw() {
     //drawing code here
     colorMode(RGB);
     background(173, 216, 230);
 
     if (shuffle) {
-        model.shuffleData();
-        shuffle = false;
+        //await model.shuffleData();
+
+        //shuffle = false;
         sorting = false;
+        redraw();
     }
 
     if (reset) {
@@ -64,6 +66,18 @@ function shuffleData() {
     reset = false;
 }
 
+async function shuffleIt(){
+  console.log(shuffle);
+  await shuffleData();
+  await model.shuffleData();
+
+  shuffle = true;
+
+
+  sorting = false;
+  console.log(shuffle);
+
+}
 function resetData() {
 
     shuffle = false;
@@ -83,7 +97,8 @@ async function bubbleSort() {
                     await sleep(0);
                 }
                 if (shuffle || reset) {
-                    break;
+
+                    return;
                 }
             }
         }
@@ -92,14 +107,17 @@ async function bubbleSort() {
 }
 
 async function quickSort(start, end) {
-
+  shuffle = false;
 
     if (start >= end) {
         return;
     }
 
     let index = await partition(start, end);
+    if (shuffle || reset) {
 
+        return;
+    }
 
     await Promise.all([
         quickSort(start, index - 1),
@@ -115,7 +133,10 @@ async function partition(start, end) {
 
     for(let i = start; i < end; i++){
 
-
+      if (shuffle || reset) {
+          shuffle = true;
+          return;
+      }
 
         if(model.getData()[i] <  pivotValue){
 
@@ -145,7 +166,6 @@ async function execute() {
 
 
 
-
     console.log(model.getData());
 
 
@@ -165,6 +185,7 @@ async function beginSort() {
     if (userChoice === "Bubble sort") {
 
         bubbleSort();
+
 
     } else if (userChoice === "Quick sort") {
 
