@@ -88,7 +88,7 @@ async function bubbleSort() {
             }
         }
         sorting = false;
-    }
+   }
 }
 
 async function quickSort(start, end) {
@@ -167,4 +167,6 @@ async function beginSort() {
 
         execute();
     }
+
+
 }
