@@ -14,21 +14,13 @@ function setup() {
     var y = (windowHeight - height) / 2;
     cnv.position(x, y);
 
-
+    sleepDur = 15;
 }
 
 async function draw() {
     //drawing code here
     colorMode(RGB);
     background(173, 216, 230);
-
-    if (shuffle) {
-        //await model.shuffleData();
-
-        //shuffle = false;
-        //sorting = false;
-        //redraw();
-    }
 
     if (reset) {
         model.resetData();
@@ -39,7 +31,6 @@ async function draw() {
     if (sorting) {
         reset = false;
         shuffle = false;
-
     }
 
     var colorInterval = 315 / model.getData().length;
@@ -68,17 +59,10 @@ function shuffleData() {
 
 async function shuffleIt(){
   sorting = false;
-  console.log(shuffle);
-  await shuffleData();
+  shuffleData();
   await model.shuffleData();
-
-  //shuffle = true;
-
-
-
-  console.log(shuffle);
-
 }
+
 function resetData() {
 
     shuffle = false;
@@ -95,7 +79,7 @@ async function bubbleSort() {
             for (let j = 0; j < (model.getData().length - i); j++) {
                 if (model.getData()[j] > model.getData()[j + 1]) {
                     model.swap(j, (j + 1));
-                    await sleep(0);
+                    await sleep(sleepDur);
                 }
                 if (shuffle || reset) {
 
@@ -142,7 +126,7 @@ async function partition(start, end) {
         if(model.getData()[i] <  pivotValue){
 
 
-          await sleep(50);
+          await sleep(sleepDur);
 
 
             await model.swap(i, pivotIndex);
@@ -154,7 +138,7 @@ async function partition(start, end) {
     }
 
 
-    await sleep(50);
+    await sleep(sleepDur);
     await model.swap(pivotIndex, end);
 
 
@@ -164,17 +148,8 @@ async function partition(start, end) {
 async function execute() {
 
     quickSort(0, model.getData().length - 1);
-
-
-
-    console.log(model.getData());
-
-
 }
 
-function sleep(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-}
 
 async function beginSort() {
 
@@ -192,6 +167,4 @@ async function beginSort() {
 
         execute();
     }
-
-
 }
