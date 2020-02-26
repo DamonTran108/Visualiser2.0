@@ -42,6 +42,7 @@ async function draw() {
         noStroke();
         rect(i * rectWidth, height, rectWidth, -(rectHeight * model.getData()[i]));
     }
+
 }
 
 function windowResized() {
@@ -151,6 +152,43 @@ async function execute() {
 }
 
 
+async function selectionSort(){
+  shuffle = false;
+  if(!sorting){
+    sorting = true;
+
+
+  let valIndex = 0 ;
+  let val =0;
+
+  for(let oL = 0 ; oL < model.getData().length-1; oL++){
+
+    val = model.getData()[oL];
+    valIndex = oL;
+
+    for(let iL = oL +1 ; iL < model.getData().length; iL++){
+
+      if(val > model.getData()[iL]){
+        val = model.getData()[iL];
+        valIndex = iL;
+
+      }
+      if (shuffle || reset) {
+
+          return;
+      }
+    }
+
+
+    model.swap(valIndex,oL);
+    await sleep(sleepDur);
+    }
+    sorting = false;
+  }
+
+}
+
+
 async function beginSort() {
 
     var dropDownMenu = document.getElementById("dropDown");
@@ -166,6 +204,10 @@ async function beginSort() {
     } else if (userChoice === "Quick sort") {
 
         execute();
+
+    } else if (userChoice === "Selection sort"){
+
+       selectionSort();
     }
 
 
